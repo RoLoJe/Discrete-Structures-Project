@@ -1,0 +1,181 @@
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+
+	// Arrays containing the countries
+	// First letter refers to the language
+	// E = English, S = Spanish, A = Arabic, F = French
+
+	const string EP[5] = { "Ghana", "Namibia", "Liberia", "South Africa", "Malta" };
+
+	const string EG[4] = { "Australia", "Bahamas", "Barbados", "Uganda" };
+
+	const string ES[4] = { "New Zealand", "Nigeria", "Trindad", "Kenya" };
+
+	const string EPH[5] = { "United States", "United Kingdom", "England", "Tonga", "Belize" };
+
+	const string SP[5] = { "Cuba", "Argentina", "Chile", "Venezuela", "Nicaragua" };
+
+	const string SG[5] = { "Mexico", "Dominican Republic", "El Salvador", "Costa Rica", "Guatemala" };
+
+	const string SS[4] = { "Bolivia", "Spain", "Honduras", "Peru" };
+
+	const string SPH[3] = { "Colombia", "Ecuador", "Argentina" };
+
+	const string AP[4] = { "Tanzania", "Israel", "Yemen", "Comoros" };
+
+	const string AG[5] = { "Libya", "Jordan", "Kuwait", "Oman", "Tunisia" };
+
+	const string AS[4] = { "Iraq", "Egypt", "Morocco", "Chad" };
+
+	const string APH[4] = { "Syria", "Qatar", "Algeria", "Sudan" };
+
+	const string FP[5] = { "Burundi", "Congo-Kinshasa", "Senegal", "Switzerland", "Canada" };
+
+	const string FG[4] = { "Monaco", "Belgium", "Burkina Faso", "Benin" };
+
+	const string FS[4] = { "Mali", "Guinea", "France", "Cote dlvoire" };
+
+	const string FPH[5] = { "Congo-Brazzaville", "Cameroon", "Niger", "Haiti", "Madagascar" };
+
+		// Declaring variables
+
+		int lang,
+		spec;
+
+	// Questions that user will answer using 1-4
+	cout << "Enter the number for the following questions which best applies to you.\n\n";
+	cout << "What language(s) are you fluent in?:\n";
+	cout << "1)English  2)Spanish 3)Arabic 4)French\n";
+	cin >> lang;
+	cout << "What area do you specialize in?\n";
+	cout << "1)Pediatrics 2)Gynaecology 3)Surgery 4)Public Health\n";
+	cin >> spec;
+
+	// Results depending on users choices above
+	// Country is randomly chosen using srand
+
+	if (lang == 1 && spec == 1) {
+		srand(time(0));
+		string word = EP[rand() % 5];
+		cout << "You will be assigned to the following country:\n";
+		cout << word << endl;
+	}
+
+	else if (lang == 1 && spec == 2) {
+		srand(time(0));
+		string word2 = EG[rand() % 4];
+		cout << "You will be assigned to the following country:\n";
+		cout << word2 << endl;
+	}
+
+	else if (lang == 1 && spec == 3) {
+		srand(time(0));
+		string word3 = ES[rand() % 4];
+		cout << "You will be assigned to the following country:\n";
+		cout << word3 << endl;
+	}
+
+	else if (lang == 1 && spec == 4) {
+		srand(time(0));
+		string word4 = EPH[rand() % 5];
+		cout << "You will be assigned to the following country:\n";
+		cout << word4 << endl;
+	}
+
+	else if (lang == 2 && spec == 1) {
+		srand(time(0));
+		string word5 = SP[rand() % 5];
+		cout << "You will be assigned to the following country:\n";
+		cout << word5 << endl;
+	}
+
+	else if (lang == 2 && spec == 2) {
+		srand(time(0));
+		string word6 = SG[rand() % 5];
+		cout << "You will be assigned to the following country:\n";
+		cout << word6 << endl;
+	}
+
+	else if (lang == 2 && spec == 3) {
+		srand(time(0));
+		string word7 = SS[rand() % 4];
+		cout << "You will be assigned to the following country:\n";
+		cout << word7 << endl;
+	}
+
+	else if (lang == 2 && spec == 4) {
+		srand(time(0));
+		string word8 = SPH[rand() % 3];
+		cout << "You will be assigned to the following country:\n";
+		cout << word8 << endl;
+	}
+
+	else if (lang == 3 && spec == 1) {
+		srand(time(0));
+		string word9 = AP[rand() % 4];
+		cout << "You will be assigned to the following country:\n";
+		cout << word9 << endl;
+	}
+
+	else if (lang == 3 && spec == 2) {
+		srand(time(0));
+		string word10 = AG[rand() % 5];
+		cout << "You will be assigned to the following country:\n";
+		cout << word10 << endl;
+	}
+
+	else if (lang == 3 && spec == 3) {
+		srand(time(0));
+		string word11 = AS[rand() % 4];
+		cout << "You will be assigned to the following country:\n";
+		cout << word11 << endl;
+	}
+
+	else if (lang == 3 && spec == 4) {
+		srand(time(0));
+		string word12 = APH[rand() % 4];
+		cout << "You will be assigned to the following country:\n";
+		cout << word12 << endl;
+	}
+
+	else if (lang == 4 && spec == 1) {
+		srand(time(0));
+		string word13 = FP[rand() % 5];
+		cout << "You will be assigned to the following country:\n";
+		cout << word13 << endl;
+	}
+
+	else if (lang == 4 && spec == 2) {
+		srand(time(0));
+		string word14 = FG[rand() % 4];
+		cout << "You will be assigned to the following country:\n";
+		cout << word14 << endl;
+	}
+
+	else if (lang == 4 && spec == 3) {
+		srand(time(0));
+		string word15 = FS[rand() % 4];
+		cout << "You will be assigned to the following country:\n";
+		cout << word15 << endl;
+	}
+
+	else if (lang == 4 && spec == 4) {
+		srand(time(0));
+		string word16 = FPH[rand() % 5];
+		cout << "You will be assigned to the following country:\n";
+		cout << word16 << endl;
+	}
+
+	else {
+		cout << "This is not a valid option.\n";
+	}
+
+	return 0;
+}
