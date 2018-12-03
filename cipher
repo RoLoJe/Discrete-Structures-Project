@@ -18,25 +18,7 @@ void menu();
 
 //Start Execution
 int main(int argc, char** argv) {
-    //declare variables
-    string msg, key, encrypted, decrypted;
-    
-    //prompt for input
-    cout << "Enter your message to be encrypted: ";
-    getline(cin, msg);
-    cout << "Enter you keyword: ";
-    cin >> key;
-    
-    //encrypt message
-    encrypted = encrypt(msg, key);
-    
-    cout << "Your encrypted message is: " << encrypted;
-
-    cout << "\nEnter your key to decrypt: ";
-    cin >> key;
-    decrypted = decrypt(encrypted, key);
-
-    cout << "Your decrypted message is: " << decrypted;
+    menu();
     return 0;
 }
 //******************** encrypt **********************
@@ -49,12 +31,11 @@ string encrypt(string msg, string key){
     string source = msg;
     string longkey(source.length(), ' ');
     int offset, temp;
-    // generate longkey
+    // generate longkey by repeating letters in key
     for (int i = 0; i < source.length(); i ++){
         longkey[i] = key[i % key.length()];
     }
-    //output key for debugging
-    cout << "Extended key: " << longkey << endl;
+    //Loop through and convert each Character
     for (int i = 0; i < source.length(); i++){
         //check for alphabetical character
         // get offset number
@@ -65,7 +46,6 @@ string encrypt(string msg, string key){
           else{
             temp = longkey[i] - 97 + 1;
           }
-          cout << temp << endl;;
         }
         if(isalpha(source[i])){
           //check for uppercase
@@ -109,8 +89,7 @@ string decrypt(string msg, string key){
     for (int i = 0; i < source.length(); i ++){
         longkey[i] = key[i % key.length()];
     }
-    //output key for debugging
-    cout << "Extended key: " << longkey << endl;
+    //Loop through and convert each Character
     for (int i = 0; i < source.length(); i++){
               // get offset number
         if(isalpha(longkey[i])){
@@ -120,7 +99,6 @@ string decrypt(string msg, string key){
           else{
             temp = longkey[i] - 97 + 1;
           }
-          cout << longkey[i] << ": " <<temp;
         }
 
         //check for alphabetical character
@@ -133,11 +111,7 @@ string decrypt(string msg, string key){
             offset = offset - temp;
             //if lower than 'A' then start from 'Z' and subtract the difference
             if (offset < 65){
-            offset = 90 - (65 - offset) ; 
-            cout << " wrap" << endl;
-            }
-              else{
-              cout<< endl;
+            offset = 90 - (65 - offset); 
             }
           }
           else{
@@ -147,16 +121,58 @@ string decrypt(string msg, string key){
             offset = offset - temp;
             //if lower than 'a' then start from 'z' and subtract the difference
             if (offset < 97){
-            offset = 122 - (97 - offset) ; 
-            cout << " wrap" << endl;
-            }
-            else{
-              cout<< endl;
+            offset = 122 - (97 - offset); 
             }
           }
         source[i] = char(offset);
         }
     }
     return source;
+}
+//********************   menu  **********************
+//* Purpose: User Selects what function to use      *
+//***************************************************
+void menu(){
+    char choice;
+    string msg, key, encrypted, decrypted;
+    //user select operation
+    do{
+      cout << "Enter 'E' for Encrypt, 'D' for Decrypt or 'X' to exit:\n   ";
+      cin >> choice;
+    } while(choice != 'E' && choice != 'D' && choice != 'X');
+    // clear cin
+    cin.ignore (); 
+    switch(choice){
+      case 'E': {
+      //prompt for input
+      cout << "\nEnter your message to be encrypted: ";
+      getline(cin, msg);
+      cout << "\nEnter you keyword: ";
+      cin >> key;
+
+      //encrypt message
+      encrypted = encrypt(msg, key);
+    
+      cout << "Your encrypted message is: " << encrypted << endl;
+      menu();
+      } break;
+      case 'D': {
+
+      //prompt for input
+      cout << "\nEnter your message to be decrypted: ";
+      getline(cin, msg);
+      cout << "\nEnter your key to decrypt: ";  
+      cin >> key;
+      decrypted = decrypt(msg, key);
+
+      cout << "Your decrypted message is: " << decrypted << endl;
+      menu();
+      }break;
+      case 'X': {
+        cout << "Quitting Program...";
+        exit(0);
+      }
+      default : cout << "Bad Input. Try Again.";
+    }
 }
 
