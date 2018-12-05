@@ -7,5 +7,4 @@ Limitations:
 if you input anything other than 1-4, the second question will appear before outputting "This is not a valid option"
 Very small arrays mean that the program is limited in distribution
 Only 4 languages and specializations are given so anyone that doesn't speak/specialize in them are out of luck
-Not as effective as it could be if you want to edit/add more to it
-
+Not as efficient as it could be if you want to edit/add more to it
