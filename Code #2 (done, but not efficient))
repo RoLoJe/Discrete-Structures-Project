@@ -10,6 +10,7 @@ int main()
 
 	// Arrays containing the countries
 	// First letter refers to the language
+	// Second letter refers to the specialization
 	// E = English, S = Spanish, A = Arabic, F = French
 
 	const string EP[5] = { "Ghana", "Namibia", "Liberia", "South Africa", "Malta" };
@@ -50,6 +51,7 @@ int main()
 		spec;
 
 	// Questions that user will answer using 1-4
+	
 	cout << "Enter the number for the following questions which best applies to you.\n\n";
 	cout << "What language(s) are you fluent in?:\n";
 	cout << "1)English  2)Spanish 3)Arabic 4)French\n";
