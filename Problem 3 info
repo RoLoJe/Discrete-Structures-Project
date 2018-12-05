@@ -1,0 +1,11 @@
+Approach:
+In order to get around the error we were getting in the lab, 
+I converted the characters into ints before addition and subtraction.
+I created the repeating key with using mod
+I made decrypt and encrypt their own functions
+I added a menu to trigger the functions
+
+Limitations:
+It only does Letters(A-Z, a-z)
+Spaces, numbers and symbols are not encrypted.
+Menu gets called recursively, so it uses more memory as you continue to use it.
