@@ -59,7 +59,7 @@ string encrypt(string msg, string key){
               temp +=  offset;
               //if total is higher than 'Z' mod back to 'A' 
               if (temp > 90){
-                temp = temp - 90 + 65; 
+                temp = temp - 90 + 65 - 1; 
               }
           }
           else{
@@ -69,7 +69,7 @@ string encrypt(string msg, string key){
               temp +=  offset;
               //if total is higher than 'z' mod back to 'a' 
               if (temp > 122){
-                temp = temp - 122 + 97; 
+                temp = temp - 122 + 97 - 1; 
               }
           }
         // replace source character will temp casted as char
@@ -119,7 +119,7 @@ string decrypt(string msg, string key){
             temp = temp - offset;
             //if the subtracted total is lower than 'A' then start from 'Z' ASCII value and subtract the differenc
             if (temp < 65){
-            temp = 90 - (65 - temp); 
+            temp = 90 - (65 - temp) + 1; 
             }
           }
           else{
@@ -130,7 +130,7 @@ string decrypt(string msg, string key){
       ;
             //if the subtracted total is lower than 'a' then start from 'z' ASCII value and subtract the difference
             if (temp < 97){
-            temp = 122 - (97 - temp); 
+            temp = 122 - (97 - temp) + 1; 
             }
           }
         // replace source character will temp casted as char
