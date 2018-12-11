@@ -150,6 +150,7 @@ void menu(){
       //prompt options
       cout << "Enter 'E' for Encrypt, 'D' for Decrypt or 'X' to exit:\n   ";
       cin >> choice;
+      choice = toupper(choice);
     } while(choice != 'E' && choice != 'D' && choice != 'X');
     // clear cin
     cin.ignore (); 
