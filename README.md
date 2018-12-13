@@ -15,7 +15,7 @@ Application of Course Concepts:
   Methods learned and applied in to the creation of this program from the course were probability and algorithms. Adding in the probability allowed the program to be in a more “real world” setting which gave equal chance of getting one of the few countries that matched the students specified language and specialization.
 
 Credits:
-  Norris 
+  Norris Le
 
 
 
