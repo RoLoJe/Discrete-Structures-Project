@@ -1,0 +1,196 @@
+/* 
+ * File:   main.cpp
+ * Author: N
+ *
+ * Created on November 19, 2018, 9:33 PM
+ */
+
+//System Library
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+//Function Prototypes
+string encrypt(string, string);
+string decrypt(string, string);
+void menu();
+
+//Start Execution
+int main(int argc, char** argv) {
+    menu();
+    return 0;
+}
+//******************** encrypt **********************
+//* Purpose:  encrypt messages with key             *
+//* Input: msg -> the message, key-> key            *
+//* Output: string-> encrypted string               *
+//***************************************************
+string encrypt(string msg, string key){
+    //declare variables
+    string source = msg;
+    string longkey(source.length(), ' ');
+    int temp, offset;
+    // generate longkey by repeating letters in key
+    for (int i = 0; i < source.length(); i ++){
+        longkey[i] = key[i % key.length()];
+    }
+    //Loop through and convert each Character
+    for (int i = 0; i < source.length(); i++){
+        //check for alphabetical character
+        // get offset number
+        if(isalpha(longkey[i])){
+          //if uppercase
+          if(isupper(longkey[i])){
+            // subtract the ASCII value of 'A' and add 1 to create the offset
+            offset = longkey[i] - 65 + 1;
+          }
+          else{
+            // subtract the ASCII value of 'a' and add 1 to creat the offset
+            offset = longkey[i] - 97 + 1;
+          }
+        }
+        if(isalpha(source[i])){
+          //check for uppercase
+          if (isupper(source[i])){
+              //make temp the source casted as int
+              temp = int(source[i]);
+              //add offset value
+              temp +=  offset;
+              //if total is higher than 'Z' mod back to 'A' 
+              if (temp > 90){
+                temp = temp - 90 + 65 - 1; 
+              }
+          }
+          else{
+              //make temp the source casted as int
+              temp = int(source[i]);
+              //add offset value
+              temp +=  offset;
+              //if total is higher than 'z' mod back to 'a' 
+              if (temp > 122){
+                temp = temp - 122 + 97 - 1; 
+              }
+          }
+        // replace source character will temp casted as char
+        source[i] = char(temp);
+        }
+    }
+    return source;
+}
+//******************** decrypt **********************
+//* Purpose:  decrypt messages with key             *
+//* Input: msg ->encyrpted message, key-> key       *
+//* Output: string-> decrypted string               *
+//***************************************************
+string decrypt(string msg, string key){
+    //declare variables
+    string source = msg;
+    string longkey(source.length(), ' ');
+    int temp, offset;
+
+    // generate longkey
+    for (int i = 0; i < source.length(); i ++){
+        longkey[i] = key[i % key.length()];
+    }
+    //Loop through and convert each Character
+    for (int i = 0; i < source.length(); i++){
+        //check for alphabetical character
+        // get offset number
+        if(isalpha(longkey[i])){
+          //if uppercase
+          if(isupper(longkey[i])){
+            // subtract the ASCII value of 'A' and add 1 to create the offset
+            offset = longkey[i] - 65 + 1;
+          }
+          else{
+            // subtract the ASCII value of 'a' and add 1 to create the offset
+            offset = longkey[i] - 97 + 1;
+          }
+        }
+
+        //check for alphabetical character
+        if(isalpha(source[i])){
+          //check for uppercase
+          if (isupper(source[i])){
+            //make temp the source casted as int
+            temp = int(source[i]);
+            //subtract the offset
+            temp = temp - offset;
+            //if the subtracted total is lower than 'A' then start from 'Z' ASCII value and subtract the differenc
+            if (temp < 65){
+            temp = 90 - (65 - temp) + 1; 
+            }
+          }
+          else{
+            //make temp the source casted as int
+            temp = int(source[i]);
+            //subtract offset
+            temp = temp - offset
+      ;
+            //if the subtracted total is lower than 'a' then start from 'z' ASCII value and subtract the difference
+            if (temp < 97){
+            temp = 122 - (97 - temp) + 1; 
+            }
+          }
+        // replace source character will temp casted as char
+        source[i] = char(temp);
+        }
+    }
+    return source;
+}
+//********************   menu  **********************
+//* Purpose: User Selects what function to use      *
+//***************************************************
+void menu(){
+    char choice;
+    string msg, key, encrypted, decrypted;
+    //user select operation
+    do{
+      //prompt options
+      cout << "Enter 'E' for Encrypt, 'D' for Decrypt or 'X' to exit:\n   ";
+      cin >> choice;
+      choice = toupper(choice);
+    } while(choice != 'E' && choice != 'D' && choice != 'X');
+    // clear cin
+    cin.ignore (); 
+    switch(choice){
+      //If they choose to encrypt
+      case 'E': {
+      //prompt for input
+      cout << "\nEnter your message to be encrypted: ";
+      getline(cin, msg);
+      cout << "\nEnter you keyword: ";
+      cin >> key;
+      //encrypt message
+      encrypted = encrypt(msg, key);
+      //Output encrypted message
+      cout << "Your encrypted message is: " << encrypted << endl;
+      //recall menu
+      menu();
+      } break;
+
+      //If they choose tp decrypt
+      case 'D': {
+      //prompt for input
+      cout << "\nEnter your message to be decrypted: ";
+      getline(cin, msg);
+      cout << "\nEnter your key to decrypt: ";  
+      cin >> key;
+      //decrypt message
+      decrypted = decrypt(msg, key);
+      //Output decrypted message
+      cout << "Your decrypted message is: " << decrypted << endl;
+      //recall menu
+      menu();
+      }break;
+
+      //If they chose the Exit
+      case 'X': {
+        cout << "Quitting Program...";
+        exit(0);
+      }
+      //If they somehow get past to do while and choice isn't any of the above
+      default : cout << "Bad Input...";
+    }
+}

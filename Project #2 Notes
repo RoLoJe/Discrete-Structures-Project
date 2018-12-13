@@ -1,0 +1,10 @@
+Uses 16 different arrays that each contain 4-5 countries
+User inputs a number from 1-4 in order to answer the questions that are provided
+Based on results, the program will randomly choose a country from one of the different arrays
+That country will be the country that the graduate will be sent to aid on-site physicians
+
+Limitations:
+if you input anything other than 1-4, the second question will appear before outputting "This is not a valid option"
+Very small arrays mean that the program is limited in distribution
+Only 4 languages and specializations are given so anyone that doesn't speak/specialize in them are out of luck
+Not as efficient as it could be if you want to edit/add more to it
