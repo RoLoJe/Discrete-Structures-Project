@@ -23,7 +23,7 @@ Credits:
 
 
 
--Documentation
+-Documentation-
 Case 3: 
 Program: Vigenere Cipher Decryption
 
