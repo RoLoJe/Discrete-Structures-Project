@@ -2,7 +2,7 @@
 
 
 -Documentation-
-Case 2: /n
+Case 2:
 Program: UCR Medical Center Volunteers
 
 Program Description:
