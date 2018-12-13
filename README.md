@@ -2,7 +2,7 @@
 
 
 -Documentation-
-Case: 2
+Case 2: 
 Program: UCR Medical Center Volunteers
 
 Program Description:
@@ -24,7 +24,7 @@ Credits:
 
 
 -Documentation
-Case: 3
+Case 3: 
 Program: Vigenere Cipher Decryption
 
 Program Description:
