@@ -60,7 +60,7 @@ int main()
 	cin >> spec;
 
 	// Results depending on users choices above
-	// Country is randomly chosen using srand
+	// Country is randomly chosen using srand 
 
 	if (lang == 1 && spec == 1) {
 		srand(time(0));
