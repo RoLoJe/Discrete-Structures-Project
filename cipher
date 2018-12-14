@@ -126,8 +126,7 @@ string decrypt(string msg, string key){
             //make temp the source casted as int
             temp = int(source[i]);
             //subtract offset
-            temp = temp - offset
-      ;
+            temp = temp - offset;
             //if the subtracted total is lower than 'a' then start from 'z' ASCII value and subtract the difference
             if (temp < 97){
             temp = 122 - (97 - temp) + 1; 
@@ -143,53 +142,48 @@ string decrypt(string msg, string key){
 //* Purpose: User Selects what function to use      *
 //***************************************************
 void menu(){
-    char choice;
-    string msg, key, encrypted, decrypted;
+     
+    string choice, msg, key, encrypted, decrypted;
     //user select operation
     do{
       //prompt options
       cout << "Enter 'E' for Encrypt, 'D' for Decrypt or 'X' to exit:\n   ";
       cin >> choice;
-    } while(choice != 'E' && choice != 'D' && choice != 'X');
-    // clear cin
-    cin.ignore (); 
-    switch(choice){
-      //If they choose to encrypt
-      case 'E': {
-      //prompt for input
-      cout << "\nEnter your message to be encrypted: ";
-      getline(cin, msg);
-      cout << "\nEnter you keyword: ";
-      cin >> key;
-      //encrypt message
-      encrypted = encrypt(msg, key);
-      //Output encrypted message
-      cout << "Your encrypted message is: " << encrypted << endl;
-      //recall menu
-      menu();
-      } break;
-
-      //If they choose tp decrypt
-      case 'D': {
-      //prompt for input
-      cout << "\nEnter your message to be decrypted: ";
-      getline(cin, msg);
-      cout << "\nEnter your key to decrypt: ";  
-      cin >> key;
-      //decrypt message
-      decrypted = decrypt(msg, key);
-      //Output decrypted message
-      cout << "Your decrypted message is: " << decrypted << endl;
-      //recall menu
-      menu();
-      }break;
-
-      //If they chose the Exit
-      case 'X': {
-        cout << "Quitting Program...";
-        exit(0);
+      if (choice.length() != 1){
+        choice = "An input error...";
       }
-      //If they somehow get past to do while and choice isn't any of the above
-      default : cout << "Bad Input...";
+      choice = toupper(choice[0]);
+      // clear cin
+      cin.ignore (); 
+      switch(choice[0]){
+        //If they choose to encrypt
+        case 'E': {
+        //prompt for input
+        cout << "\nEnter your message to be encrypted: ";
+        getline(cin, msg);
+        cout << "\nEnter you keyword: ";
+        cin >> key;
+        //encrypt message
+        encrypted = encrypt(msg, key);
+        //Output encrypted message
+        cout << "Your encrypted message is: " << encrypted << endl;
+      } break;
+        //If they choose tp decrypt
+        case 'D': {
+        //prompt for input
+        cout << "\nEnter your message to be decrypted: ";
+        getline(cin, msg);
+        cout << "\nEnter your key to decrypt: ";  
+        cin >> key;
+        //decrypt message
+        decrypted = decrypt(msg, key);
+        //Output decrypted message
+        cout << "Your decrypted message is: " << decrypted << endl;
+      }break;
+        case 'X': {
+          cout << "Quitting...\n";
+      }break;
+      default : cout << "Bad Input...\n";
     }
+  } while(choice[0] != 'X');
 }
